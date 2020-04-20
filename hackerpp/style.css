@@ -1,0 +1,197 @@
+body{
+    user-select: none;
+    background-color: #0c002b;
+    color: white;
+    font-size: large;
+    font-family: cursive;
+}
+.restart,.normal,.hacker,.hackerpp {
+    color: #1779ff;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+}
+.restart:hover,.normal:hover,.hacker:hover,.hackerpp:hover {
+    background: #1779ff;
+    letter-spacing: 1px;
+    margin-left: 10px;
+    transform: scale(1.2);
+    color: #0c002b;
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+.hackerpp{
+    background-color: #1779ff;
+    color: #0c002b;
+}
+.hackerpp:hover{
+    transform: scale(1);
+}
+.container{
+    position: relative;
+    height: 510px;
+    width: 500px;
+    overflow: hidden;
+    left: 50%;
+    top: -55%;
+    transform: translate(-50%);
+    background-color: black;
+    transition: 1s;
+}
+.table1{
+    position: absolute;
+    text-align: center;
+}
+.table2{
+    position: relative;
+    text-align: center;
+    left: 100%;
+}
+
+.cell{
+    border: 2px solid white;
+    border-radius: 10px;
+    font-size: 50px;
+    height: 100px;
+    color: aquamarine;
+    width: 100px;
+    transition: 0.3s;
+}
+.cell:hover{
+    transform: scale(1.15);
+}
+#timer{
+    left: 0;
+}
+@media (max-width: 900px){
+    .restart,.normal,.hacker,.hackerpp{
+        float: left;
+    }
+    .container{
+        top: -20%;
+    }
+}
+#row1{
+    animation: anim1 3s linear infinite;
+    position: static;
+}
+@keyframes anim1{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row11{
+    animation: anim11 3s linear infinite;
+    position: static;
+}
+@keyframes anim11{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row2{
+    animation: anim2 3s linear infinite;
+    position: static;
+}
+@keyframes anim2{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+#row21{
+    animation: anim21 3s linear infinite;
+    position: relative;
+}
+@keyframes anim21{
+    0%{
+        transform: translateX(-200%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row3{
+    animation: anim3 3s linear infinite;
+    position: static;
+}
+@keyframes anim3{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row31{
+    animation: anim31 3s linear infinite;
+    position: relative;
+}
+@keyframes anim31{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row4{
+    animation: anim4 3s linear infinite;
+    position: static;
+}
+@keyframes anim4{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+#row41{
+    animation: anim41 3s linear infinite;
+    position: relative;
+}
+@keyframes anim41{
+    0%{
+        transform: translateX(-200%);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row5{
+    animation: anim5 3s linear infinite;
+    position: static;
+}
+@keyframes anim5{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
+#row51{
+    animation: anim51 3s linear infinite;
+    position: relative;
+}
+@keyframes anim51{
+    0%{
+        transform: translateX(0);
+    }
+    100%{
+        transform: translateX(-100%);
+    }
+}
