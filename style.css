@@ -4,7 +4,7 @@ body{
     color: white;
     font-family: cursive;
 }
-.restart,.normal,.hacker,.hackerpp {
+.restart,.normal,.hacker,.hackerpp,.start {
     color: #1779ff;
     text-transform: uppercase;
     text-decoration: none;
@@ -15,6 +15,11 @@ body{
     border: none;
     transition: all 0.4s ease 0s;
     margin-left: 10px;
+}
+.start{
+    background: #1779ff;
+    letter-spacing: 1px;
+    color: #0c002b;
 }
 .normal{
     background: #1779ff;
