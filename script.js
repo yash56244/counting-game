@@ -104,7 +104,7 @@ function handleCellClick(clickedCellEvent){
                     alert("You Won!!");
                 }
                 else{
-                    alert("Good try but you fall short by "+ (clicks-score) + "\n Please try again.");
+                    alert("Good try , but you clicked some wrong tiles");
                 }
                 scores.push(t);
                 var str=JSON.stringify(scores);
