@@ -73,6 +73,7 @@ function handleCellClick(clickedCellEvent){
         }
         else{
             c[clickedCellIndex-1].textContent = Number(c[clickedCellIndex-1].textContent)+25;
+            c[clickedCellIndex+24].textContent = Number(c[clickedCellIndex+24].textContent)+25;
             score++;
             document.getElementById('counts').textContent=score;
         }
@@ -89,13 +90,16 @@ function handleCellClick(clickedCellEvent){
         else{
             if (c[clickedCellIndex-1].textContent>0 && c[clickedCellIndex-1].textContent<=15){
                 c[clickedCellIndex-1].textContent = Number(c[clickedCellIndex-1].textContent)+25;
+                c[clickedCellIndex+24].textContent = Number(c[clickedCellIndex+24].textContent)+25;
             }
     
-            else if (c[clickedCellIndex-1].textContent>9 && c[clickedCellIndex-1].textContent!=40){
+            else if (c[clickedCellIndex-1].textContent>15 && c[clickedCellIndex-1].textContent!=40){
                 c[clickedCellIndex-1].textContent=" ";
+                c[clickedCellIndex+24].textContent=" ";
             }
             else if(c[clickedCellIndex-1].textContent==40){
                 c[clickedCellIndex-1].textContent=" ";
+                c[clickedCellIndex+24].textContent=" ";
                 clearInterval(interval);
                 var t=Number(time);
                 console.log(scores);
