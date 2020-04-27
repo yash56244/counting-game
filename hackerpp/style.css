@@ -5,7 +5,7 @@ body{
     font-size: large;
     font-family: cursive;
 }
-.restart,.normal,.hacker,.hackerpp {
+.restart,.normal,.hacker,.hackerpp,.start {
     color: #1779ff;
     text-transform: uppercase;
     text-decoration: none;
@@ -14,6 +14,11 @@ body{
     display: inline-block;
     border: none;
     transition: all 0.4s ease 0s;
+}
+.start{
+    background: #1779ff;
+    letter-spacing: 1px;
+    color: #0c002b;
 }
 .restart:hover,.normal:hover,.hacker:hover,.hackerpp:hover {
     background: #1779ff;
