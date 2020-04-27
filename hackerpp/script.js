@@ -2,9 +2,10 @@ var c =document.getElementsByTagName("td");
 var a;
 var result = generateRandom();
 var clicks=0;
+var score=0;
 var check=[];
-var startTime = Date.now();
-var interval = setInterval(timer, 100);
+var time;
+var interval;
 var retrievedData=JSON.parse(localStorage.getItem("best_scores"));
 if (Array.isArray(retrievedData)){
     retrievedData.sort();
@@ -20,11 +21,14 @@ for (let i = 0; i < c.length/2; i++) {
     c[i+25].innerText=result[i];   
 }
 
-function timer() {
-    var elapsedTime = Date.now() - startTime;
-    var time = (elapsedTime / 1000).toFixed(3);
-    document.getElementById("timer").innerHTML = time + "s";
-    return time+"s";
+function start(){
+    var startTime = Date.now();
+    interval = setInterval(function(){
+        var elapsedTime = Date.now() - startTime;
+        time = (elapsedTime / 1000).toFixed(3);
+        document.getElementById("timer").innerHTML = time + "s";
+    }, 100);
+    console.log(interval)
 }
 
 function bestTime(){
@@ -55,7 +59,8 @@ function generateRandom() {
 }
 
 function handleCellClick(clickedCellEvent){
-    var mySound = new Audio("1.mp3");
+    if(time!==undefined){
+        var mySound = new Audio("1.mp3");
     mySound.play();
     const clickedCell = clickedCellEvent.target;
     const clickedCellIndex = parseInt(clickedCell.getAttribute('data-cell-index'));
@@ -67,21 +72,9 @@ function handleCellClick(clickedCellEvent){
             restartGame();
         }
         else{
-            check.push(pi);
-            check.sort((a,b) => a-b);
-            if (checkClick()===1) {
-                alert("You Have Clicked Incorrect Value \n Press OK to play again!!");      //check if user have clicked in correct order.
-                restartGame();
-            }
-
-            if (c[clickedCellIndex-1].textContent>0 && c[clickedCellIndex-1].textContent<=15){
-                c[clickedCellIndex-1].textContent = Number(c[clickedCellIndex-1].textContent)+25;
-                c[clickedCellIndex+24].textContent = Number(c[clickedCellIndex+24].textContent)+25;
-            }
-
-            else if (c[clickedCellIndex-1].textContent>15){
-                c[clickedCellIndex-1].textContent=" ";
-            }
+            c[clickedCellIndex-1].textContent = Number(c[clickedCellIndex-1].textContent)+25;
+            score++;
+            document.getElementById('counts').textContent=score;
         }
     }
     
@@ -89,37 +82,43 @@ function handleCellClick(clickedCellEvent){
         check.push(pi);
         check.sort((a,b) => a-b);
         if (checkClick()===1) {
-            alert("You Have Clicked Incorrect Value \n Press OK to play again!!");      //check if user have clicked in correct order.
-            restartGame();
+            check.pop();
+            score--;
+            document.getElementById('counts').textContent=score;
         }
-
-        else if(c[clickedCellIndex-1].textContent==40){
-            c[clickedCellIndex-1].textContent=" ";
-            clearInterval(interval);
-            var t=timer();
-            alert("You Won!!");                               //Win condition.
-            scores.push(t);
-            var str=JSON.stringify(scores);
-            localStorage.setItem("best_scores",str);
-            bestTime();
-            alert("Game will restart");
-            window.location.reload(true);
-        }
-
-        if (c[clickedCellIndex-1].textContent>0 && c[clickedCellIndex-1].textContent<=15){
-            c[clickedCellIndex-1].textContent = Number(c[clickedCellIndex-1].textContent)+25;
-            c[clickedCellIndex+24].textContent = Number(c[clickedCellIndex+24].textContent)+25;
-        }
-
-        else if (c[clickedCellIndex-1].textContent>15){
-            c[clickedCellIndex-1].textContent=" ";
-            c[clickedCellIndex+24].textContent=" ";
+        else{
+            if (c[clickedCellIndex-1].textContent>0 && c[clickedCellIndex-1].textContent<=15){
+                c[clickedCellIndex-1].textContent = Number(c[clickedCellIndex-1].textContent)+25;
+            }
+    
+            else if (c[clickedCellIndex-1].textContent>9 && c[clickedCellIndex-1].textContent!=40){
+                c[clickedCellIndex-1].textContent=" ";
+            }
+            else if(c[clickedCellIndex-1].textContent==40){
+                c[clickedCellIndex-1].textContent=" ";
+                clearInterval(interval);
+                var t=Number(time);
+                console.log(scores);
+                if(clicks==score){
+                    alert("You Won!!");
+                }
+                else{
+                    alert("Good try but you fall short by "+ (clicks-score) + "\n Please try again.");
+                }
+                scores.push(t);
+                var str=JSON.stringify(scores);
+                localStorage.setItem("best_scores",str);
+                console.log(localStorage.getItem("best_scores"));
+                bestTime();
+                restartGame();
+            }
+            score++;
+            document.getElementById('counts').textContent=score;
         }
     }
-
     clicks++;
-    document.getElementById('counts').textContent=clicks;
-    bgColor();                       //for changing backgrounds of number from 26.
+    bgColor();
+    }
 }
 
 function bgColor(){
