@@ -115,7 +115,7 @@ function handleCellClick(clickedCellEvent){
         }
     }
     clicks++;
-    
+    bgColor();
     }
 }
 
